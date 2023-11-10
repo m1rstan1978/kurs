@@ -5,6 +5,7 @@ import KLogin from '@/pages/KLogin'
 import KChats from '@/pages/KChats'
 
 import axios from 'axios';
+const urlPage = 'https://6bp98ls3-8000.euw.devtunnels.ms/'
 
 const routes = [
   {
@@ -12,7 +13,7 @@ const routes = [
     name: 'main',
     component: KMain,
     beforeEnter( to, from, next ) {
-      axios.post(this.$store.state.urlPage + 'api/user/check', {}, {
+      axios.post(urlPage + 'api/user/check', {}, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -35,7 +36,7 @@ const routes = [
     name: 'registration',
     component: KRegistration,
     beforeEnter( to, from, next ) {
-      axios.post(this.$store.state.urlPage + 'api/user/check', {}, {
+      axios.post(urlPage + 'api/user/check', {}, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -58,7 +59,7 @@ const routes = [
     name: 'login',
     component: KLogin,
     beforeEnter( to, from, next ) {
-      axios.post(this.$store.state.urlPage + 'api/user/check', {}, {
+      axios.post(urlPage + 'api/user/check', {}, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -81,7 +82,7 @@ const routes = [
     name: 'chats',
     component: KChats,
     beforeEnter( to, from, next ) {
-      axios.post(this.$store.state.urlPage + 'api/user/check', {}, {
+      axios.post(urlPage + 'api/user/check', {}, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
