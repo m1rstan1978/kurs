@@ -5,6 +5,7 @@
             <div class="main__logo">
                 <img src="@/assets/main/logo.svg">
             </div>
+            <button class="main__user_btn main_user_btn1" @click="$router.push('/chats')">Перейти в чат</button>
             <div class="main__user">
                 <div class="main__user_logo">
                     <img :src="$store.state.userImageSrc">
@@ -87,5 +88,8 @@ export default {
 .main__menu{
     width: 700px;
     margin-left: 80px;
+}
+.main_user_btn1 {
+    margin-bottom: 50px;
 }
 </style>

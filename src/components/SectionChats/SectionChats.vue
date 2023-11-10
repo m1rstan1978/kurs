@@ -1,5 +1,6 @@
 <template>
     <div class="chats" v-if="arrItems">
+        <h1 class="chats__h1" v-if="arrItems.length <= 0">У вас пусто пригласите друга в чат</h1>
         <div class="chats__header">
             <div class="chats__about">
                 <div class="chats__logo">
@@ -10,7 +11,7 @@
                         <img :src="$store.state.userImageSrc">
                     </div>
                     <div class="chats__leave">
-                        <button class="chats__btn">Вернуться на главную</button>
+                        <button class="chats__btn" @click="$router.push('/')">Вернуться на главную</button>
                     </div>
                 </div>
             </div>
@@ -119,6 +120,9 @@ export default {
     max-width: 1200px;
     width: 100%;
     margin:0 auto;
+}
+.chats__h1 {
+    color: white;
 }
 .chats__header {
     display: flex;
