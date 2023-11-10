@@ -12,7 +12,7 @@ const routes = [
     name: 'main',
     component: KMain,
     beforeEnter( to, from, next ) {
-      axios.post('http://localhost:8000/api/user/check', {}, {
+      axios.post(this.$store.state.urlPage + 'api/user/check', {}, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -35,7 +35,7 @@ const routes = [
     name: 'registration',
     component: KRegistration,
     beforeEnter( to, from, next ) {
-      axios.post('http://localhost:8000/api/user/check', {}, {
+      axios.post(this.$store.state.urlPage + 'api/user/check', {}, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -58,7 +58,7 @@ const routes = [
     name: 'login',
     component: KLogin,
     beforeEnter( to, from, next ) {
-      axios.post('http://localhost:8000/api/user/check', {}, {
+      axios.post(this.$store.state.urlPage + 'api/user/check', {}, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -81,7 +81,7 @@ const routes = [
     name: 'chats',
     component: KChats,
     beforeEnter( to, from, next ) {
-      axios.post('http://localhost:8000/api/user/check', {}, {
+      axios.post(this.$store.state.urlPage + 'api/user/check', {}, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
