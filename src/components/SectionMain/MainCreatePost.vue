@@ -39,7 +39,7 @@ export default {
                     "Content-Type": "multipart/form-data"
                 }
             })
-            this.$emit('addPost', await response.data)
+            this.$emit('addPost')
             this.newsModel = ''
             alert('Пост успешно создан')
             return;

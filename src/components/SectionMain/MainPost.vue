@@ -174,17 +174,17 @@ export default {
             if(await response) {
                 this.$emit('delPost',this.item.uuid_posts)
                 this.isActions = false
+                
             }
-        }
-    },
-    async mounted() {
-        try {
-            const resC = await axios.post( this.$store.state.urlPage + 'api/comments/list',{
-                uuid_comments:this.item.uuid_posts
-            })
-            this.arrComm = await resC.data.rows
-            
-            const resL = await axios.post( this.$store.state.urlPage + 'api/likes/list',{
+        },
+        async getLikeAndComm() {
+            try {
+                const resC = await axios.post( this.$store.state.urlPage + 'api/comments/list',{
+                    uuid_comments:this.item.uuid_posts
+                })
+                this.arrComm = await resC.data.rows
+        
+                const resL = await axios.post( this.$store.state.urlPage + 'api/likes/list',{
                 uuid_likes:this.item.uuid_posts
             })
             this.arrLikes = await resL.data.rows
@@ -192,6 +192,15 @@ export default {
         }
         catch {
             
+        }
+        }
+    },
+    async mounted() {
+        this.getLikeAndComm()
+    },
+    watch:{
+        async item(val) {
+            this.getLikeAndComm()
         }
     }
 }

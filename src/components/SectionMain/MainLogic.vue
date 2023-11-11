@@ -22,11 +22,13 @@ import axios from 'axios';
 import MainCreatePost from './MainCreatePost.vue'
 import MainPost from './MainPost.vue';
 import MainSearchPost from './MainSearchPost.vue';
+import io from 'socket.io-client';
 
 export default {
   data() {
     return {
-      arrPosts:null
+      arrPosts:null,
+      socket:io(this.$store.state.urlPage)
     }
   },
   methods:{
@@ -34,8 +36,11 @@ export default {
       const idx = this.arrPosts.findIndex(item => item.uuid_posts === post)
       this.arrPosts.splice(idx, 1)
     },
-    addNewPost(obj) {
-      this.arrPosts.unshift(obj.rows[0])
+    addNewPost() {
+      this.socket.emit('createPost')
+      this.socket.on('getAllPosts',(msg) => {
+        this.arrPosts = msg
+      })
     },
     getPosts(arr) {
       this.arrPosts = arr
