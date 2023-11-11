@@ -26,7 +26,7 @@
 
 <script>
 import axios from 'axios'
-import io from 'socket.io-client';
+import { io } from 'socket.io-client'
 
 export default {
     props:{
@@ -78,6 +78,10 @@ export default {
         }
     },
     mounted() {
+        this.socket.emit('message',this.uuid)
+        this.socket.on('allMessages',msg => {
+            this.arrMessages = msg
+        })
     }
     }
 </script>

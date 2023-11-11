@@ -4,8 +4,14 @@
 
 <script>
 import axios from 'axios'
+import io from 'socket.io-client';
 
 export default {
+  data() {
+    return {
+      socket:io(this.$store.state.urlPage)
+    }
+  },
   mounted() {
     axios.post(this.$store.state.urlPage + 'api/user/check', {}, {
         headers: {
@@ -18,6 +24,7 @@ export default {
       })
       .catch( e => {
       })
+      this.socket.emit('connectServer','Соединение установлено')
   }
 }
 </script>

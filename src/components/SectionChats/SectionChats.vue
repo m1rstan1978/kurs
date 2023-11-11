@@ -1,6 +1,5 @@
 <template>
     <div class="chats" v-if="arrItems">
-        <h1 class="chats__h1" v-if="arrItems.length <= 0">У вас пусто пригласите друга в чат</h1>
         <div class="chats__header">
             <div class="chats__about">
                 <div class="chats__logo">
@@ -24,12 +23,15 @@
                 </div>
             </div>
         </div>
-        <div class="chats__content">
+        <h1 class="chats__h1" v-if="arrItems.length <= 0">У вас нет созданных чатов, пригласите друга</h1>
+        <div class="chats__content" v-else>
             <div class="item">
                 <chats-item
-                v-for="item in arrItems"
+                v-for="(item, idx) in arrItems"
                 :key="item.id"
                 :item="item"
+                :idx="idx"
+                :class="{activeItemChat : activeIdx === idx}"
                 @setUuid="setUuidMessage"
                 ></chats-item>
             </div>
@@ -53,12 +55,14 @@ export default {
             arrItems:null,
             arrChats:null,
             uuidMessages:null,
-            inviteModel:''
+            inviteModel:'',
+            activeIdx:null
         }
     },
     methods:{
-        setUuidMessage(obj) {
+        setUuidMessage(obj, idx) {
             this.uuidMessages = obj
+            this.activeIdx = idx
         },
         async inviteFriend() {
             try {
@@ -123,6 +127,8 @@ export default {
 }
 .chats__h1 {
     color: white;
+    text-align: center;
+    margin:140px 0;
 }
 .chats__header {
     display: flex;
@@ -174,6 +180,9 @@ export default {
     border-radius: 6px;
     border: 1px solid rgba(0, 0, 0, 0.20);
     background: #222;
+}
+.activeItemChat{
+    border:1px solid #009C64;
 }
 .chats__content {
     display: grid;

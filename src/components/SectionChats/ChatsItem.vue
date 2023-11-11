@@ -1,5 +1,5 @@
 <template>
-  <div class="chats__item" @click="$emit('setUuid',item.uuid_messages)">
+  <div class="chats__item" @click="$emit('setUuid',item.uuid_messages, idx);setActiveItem()" :class="{activeItemChat : idx === activeIdx}">
     <div class="chats__item_content">
         <div class="chats__item_header">
             <img :src="item.imagesrc">
@@ -17,10 +17,20 @@ export default {
     props:{
         item:{
             type:Object
+        },
+        idx:{
+            type:Number
         }
     },
-    mounted() {
-        
+    data() {
+        return {
+            activeIdx:null
+        }
+    },
+    methods:{
+        setActiveItem() {
+            this.$emit('')
+        }
     }
 }
 </script>
