@@ -111,7 +111,7 @@ export default {
                     alert('Размер комментария должен быть больше 5 символов')
                     return;
                 }
-                const response = await axios.post('http://localhost:8000/api/comments/create',{
+                const response = await axios.post(this.$store.state.urlPage + 'api/comments/create',{
                     username:this.$store.state.userName,
                     userImageSrc:this.$store.state.userImageSrc,
                     uuid_comments:this.item.uuid_posts,
