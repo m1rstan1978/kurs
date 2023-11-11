@@ -57,7 +57,7 @@ export default {
             arrChats:null,
             uuidMessages:null,
             inviteModel:'',
-            activeIdx:0
+            activeIdx:null
         }
     },
     methods:{
@@ -103,16 +103,9 @@ export default {
                     name:this.$store.state.userName 
                 })
                 this.arrItems = response.data
-                this.uuidMessages = this.arrItems[0].uuid_messages
             }
         }
         catch(e) {
-            if(!e.response) {
-                alert('Сервер не запущен')
-                return
-            }
-            alert(e.response.data.message)
-            return;
         }
 
     },

@@ -42,8 +42,8 @@ export default {
     },
     methods:{
         async addMessage() {
-            if(this.contentModel.length <= 3) {
-                alert('В вашем сообщении должно быть больше 5 символов')
+            if(this.contentModel.length <= 0) {
+                alert('В вашем сообщении должно быть больше 1 символа')
                 return;
             }
             const response = await axios.post(this.$store.state.urlPage + 'api/messages/create',{
