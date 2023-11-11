@@ -138,7 +138,7 @@ export default {
             }
         },
         async setLike() {
-            const response = await axios.post('http://localhost:8000/api/likes/create',{
+            const response = await axios.post(this.$store.state.urlPage + 'api/likes/create',{
                 uuid_like: this.item.uuid_posts,
                 likesname: this.$store.state.userName,
             })
