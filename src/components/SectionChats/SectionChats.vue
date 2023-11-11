@@ -39,6 +39,7 @@
             <div class="chat">
                 <chats-chat
                 :uuid="uuidMessages"
+                :activeIdx="activeIdx"
                 ></chats-chat>
             </div>
         </div>

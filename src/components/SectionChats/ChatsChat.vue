@@ -1,6 +1,6 @@
 <template>
     <div class="chats__menu">
-        <div class="chats__menu_content" v-if="arrMessages">
+        <div class="chats__menu_content" v-if="activeIdx !== null">
             <div class="chats__menu_items" ref="messagesContainer">
                 <div class="chats__menu_item"
                 v-for="item in arrMessages"
@@ -31,13 +31,16 @@ import { io } from 'socket.io-client'
 export default {
     props:{
         uuid:{},
+        activeIdx:{
+            type:Number
+        }
     },
     data() {
         return {
             arrMessages:null,
             contentModel:'',
             dataTime:null,
-            socket:io(this.$store.state.urlPage)
+            socket:io(this.$store.state.urlPage),
         }
     },
     methods:{
@@ -61,6 +64,7 @@ export default {
                     container.scrollTop = container.scrollHeight;
                 });
                 })
+                console.log(this.arrMessages)
                 this.contentModel = ''
             }
         }
