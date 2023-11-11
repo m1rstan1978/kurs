@@ -31,6 +31,7 @@
                 :key="item.id"
                 :item="item"
                 :idx="idx"
+                :activeIdxProps="activeIdx"
                 :class="{activeItemChat : activeIdx === idx}"
                 @setUuid="setUuidMessage"
                 ></chats-item>
@@ -56,7 +57,7 @@ export default {
             arrChats:null,
             uuidMessages:null,
             inviteModel:'',
-            activeIdx:null
+            activeIdx:0
         }
     },
     methods:{
@@ -102,6 +103,7 @@ export default {
                     name:this.$store.state.userName 
                 })
                 this.arrItems = response.data
+                this.uuidMessages = this.arrItems[0].uuid_messages
             }
         }
         catch(e) {

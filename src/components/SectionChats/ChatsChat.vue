@@ -30,7 +30,7 @@ import { io } from 'socket.io-client'
 
 export default {
     props:{
-        uuid:{}
+        uuid:{},
     },
     data() {
         return {

@@ -1,12 +1,12 @@
 <template>
-  <div class="chats__item" @click="$emit('setUuid',item.uuid_messages, idx);setActiveItem()" :class="{activeItemChat : idx === activeIdx}">
+  <div class="chats__item" @click="$emit('setUuid',item.uuid_messages, idx)" :class="{activeItemChat : idx === activeIdx}">
     <div class="chats__item_content">
         <div class="chats__item_header">
             <img :src="item.imagesrc">
         </div>
         <div class="chats__item_about">
             <p class="chats__item_name">{{ item.name }}</p>
-            <p class="chats__item_des">Открыть чат с пользователем</p>
+            <p class="chats__item_des">{{ contentModel }}</p>
         </div>
     </div>
   </div>
@@ -20,16 +20,30 @@ export default {
         },
         idx:{
             type:Number
+        },
+        activeIdxProps: {
+            type:Number
         }
     },
     data() {
         return {
-            activeIdx:null
+            activeIdx:null,
+            contentModel:'Открыть чат с пользователем'
         }
     },
-    methods:{
-        setActiveItem() {
-            this.$emit('')
+    mounted() {
+        if(this.activeIdxProps === this.idx) {
+            this.contentModel = 'Чат с пользователем открыт'
+        }
+    },
+    watch:{
+        activeIdxProps(val) {
+            if(val === this.idx) {
+                this.contentModel = 'Чат с пользователем открыт'
+            }
+            else {
+                this.contentModel = 'Открыть чат с пользователем'
+            }
         }
     }
 }
