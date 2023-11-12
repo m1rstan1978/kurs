@@ -21,6 +21,7 @@ export default {
       .then( res => {
         this.$store.state.userName = res.data.rows[0].login
         this.$store.state.userImageSrc = res.data.rows[0].imagesrc
+        console.log(this.$store.state.userImageSrc)
       })
       .catch( e => {
       })
