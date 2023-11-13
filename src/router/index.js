@@ -5,7 +5,7 @@ import KLogin from '@/pages/KLogin'
 import KChats from '@/pages/KChats'
 
 import axios from 'axios';
-const urlPage = 'https://kurs-server-vwrp.vercel.app/'
+const urlPage = 'https://6bp98ls3-8000.euw.devtunnels.ms/'
 
 const routes = [
   {

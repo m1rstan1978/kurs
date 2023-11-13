@@ -4,7 +4,7 @@ export default createStore({
   state: {
     userName:null,
     userImageSrc:null,
-    urlPage:'https://kurs-server-vwrp.vercel.app/'
+    urlPage:'https://6bp98ls3-8000.euw.devtunnels.ms/'
   },
   getters: {
   },
