@@ -72,7 +72,17 @@ export default {
             }
         },
         onFileChange(e) {
-            this.fileImage = e.target.files[0]
+            const checkImage = e.target.files[0]
+            const str = checkImage.type.toUpperCase()
+            if(str.includes('JPEG') || str.includes('PNG') || str.includes('JPG') || str.includes('WEBP')) {
+                this.fileImage = e.target.files[0]
+                return;
+            }
+            const fileInput = document.getElementById('post__file');
+            fileInput.value = null;
+            this.fileImage = null
+            alert('Вы выбрали неверный формат изображения, форматы которые допускаются: JPEG, PNG, WEBP')
+            return;
         },
     }
 }

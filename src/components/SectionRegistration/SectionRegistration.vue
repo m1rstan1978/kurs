@@ -15,7 +15,7 @@
                 <div class="reg__block">
                     <input class="reg__input" type="password" placeholder="Подтверждение пароля" v-model="passwordRepModel">
                 </div> 
-                <input class="reg__file" type="file" @change="onFileChange">
+                <input class="reg__file" id="reg__file" type="file" @change="onFileChange">
                 <button class="reg__btn" @click="setRegistr">Зарегистрироваться</button>
                 <p class="reg__text">Есть аккаунт? <span class="reg__span" @click="$router.push('/login')">Войти</span></p>
             </form>
@@ -78,9 +78,17 @@ export default {
 
         },
         onFileChange(e) {
-            const file = e.target.files[0]
-            this.imageSrc = URL.createObjectURL(file)
-            this.fileImage = e.target.files[0]
+            const checkImage = e.target.files[0]
+            const str = checkImage.type.toUpperCase()
+            if(str.includes('JPEG') || str.includes('PNG') || str.includes('JPG') || str.includes('WEBP')) {
+                this.fileImage = e.target.files[0]
+                return;
+            }
+            const fileInput = document.getElementById('reg__file');
+            fileInput.value = null;
+            this.fileImage = null
+            alert('Вы выбрали неверный формат изображения, форматы которые допускаются: JPEG, PNG, WEBP')
+            return;
         },
     }
 }
